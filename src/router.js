@@ -263,7 +263,9 @@ export default class VueRouter {
       warn(false, 'router.addRoutes() is deprecated and has been removed in Vue Router 4. Use router.addRoute() instead.')
     }
     this.matcher.addRoutes(routes)
+    // START: 路由对象 { path:'/', query:{}, ... }
     if (this.history.current !== START) {
+      // 当前路由不为START时，重载当前路由
       this.history.transitionTo(this.history.getCurrentLocation())
     }
   }

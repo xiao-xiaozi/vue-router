@@ -16,6 +16,7 @@ export function createRouteMap (
   nameMap: Dictionary<RouteRecord>
 } {
   // the path list is used to control path matching priority
+  // 路径列表用于控制路径匹配优先级
   const pathList: Array<string> = oldPathList || []
   // $flow-disable-line
   const pathMap: Dictionary<RouteRecord> = oldPathMap || Object.create(null)
@@ -27,6 +28,7 @@ export function createRouteMap (
   })
 
   // ensure wildcard routes are always at the end
+  // 确保通配符路由始终在末尾
   for (let i = 0, l = pathList.length; i < l; i++) {
     if (pathList[i] === '*') {
       pathList.push(pathList.splice(i, 1)[0])
@@ -37,6 +39,7 @@ export function createRouteMap (
 
   if (process.env.NODE_ENV === 'development') {
     // warn if routes do not include leading slashes
+    // 如果路由不包含前导斜杠，则发出警告
     const found = pathList
     // check for missing leading slash
       .filter(path => path && path.charAt(0) !== '*' && path.charAt(0) !== '/')
